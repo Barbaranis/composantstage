@@ -1,0 +1,67 @@
+<html>
+<body>
+
+<!-- Composant 7 -->
+<div class="component-7">
+  <div class="image-box">
+    <img src="https://picsum.photos/400/200" alt="Image exemple">
+  </div>
+  <div class="text-box">
+    <p>Texte explicatif sous l'image</p>
+  </div>
+</div>
+
+
+</body>
+
+
+
+<style>
+
+/* ===========================
+   Composant 7 : Image au-dessus du texte
+=========================== */
+.component-7 {
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  
+  .component-7 .image-box {
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  
+  .component-7 .image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  
+  .component-7 .text-box {
+    background-color: #e0e0e0;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .component-7 {
+      max-width: 90%;
+    }
+  }
+</style>
+</html>

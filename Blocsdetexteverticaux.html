@@ -1,0 +1,58 @@
+
+<html>
+<body>
+
+ <!-- Composant 5 -->
+ <div class="text-container">
+    <div class="text-block">Bloc 1</div>
+    <div class="text-block">Bloc 2</div>
+    <div class="text-block">Bloc 3</div>
+  </div>
+
+</body>
+<style>
+
+/* ===========================
+       Composant 5 : Blocs de texte verticaux
+    =========================== */
+    .text-container {
+      display: flex;
+      flex-direction: column; /* Empile verticalement */
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+
+    .text-block {
+      background-color: #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      transition: transform 0.3s ease;
+    }
+
+
+    .text-block:nth-child(1) { width: 100px; }
+    .text-block:nth-child(2) { width: 150px; }
+    .text-block:nth-child(3) { width: 200px; }
+
+
+    .text-block:hover {
+      transform: scale(1.05);
+      background-color: #ccc;
+    }
+
+
+
+
+    
+    /* Responsive : blocs prennent la largeur sur mobile */
+    @media (max-width: 600px) {
+      .text-block {
+        width: 80% !important;
+      }
+    }
+</style>
+</html>

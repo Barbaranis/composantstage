@@ -1,0 +1,41 @@
+
+<html>
+    <body>
+    
+  <!-- Composant 4 -->
+  <div class="avatar-container">
+    <img src="image/imageRegion.png" alt="Exemple">
+    <div class="text">Texte sous l'image</div>
+  </div>
+    
+    </body>
+<style>
+/* ===========================
+       Composant 4 : Image ronde au-dessus du texte
+    =========================== */
+    .avatar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+
+    .avatar-container img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+
+    .avatar-container .text {
+      font-size: 16px;
+      color: #333;
+    }
+
+</style>
+</html>
