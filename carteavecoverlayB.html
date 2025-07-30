@@ -1,14 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Composant</title>
-</head>
+  <title>Carte avec overlay</title>
   <style>
-
-
     /* ===========================
        Composant 1 : Carte avec overlay
     =========================== */
@@ -22,9 +18,16 @@
       margin: 20px auto;
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
 
+    /* Zoom léger au survol */
+    .custom-card:hover {
+      transform: scale(1.03);
+    }
 
+    /* Overlay semi-transparent */
     .custom-card .overlay {
       position: absolute;
       top: 0;
@@ -39,18 +42,28 @@
       font-size: 1.2em;
       text-align: center;
       padding: 10px;
+      transition: background-color 0.3s ease;
     }
 
+    /* Changement de couleur au survol */
+    .custom-card:hover .overlay {
+      background-color: rgba(255, 0, 0, 0.6);
+    }
 
-   
-
-  
-
-
+    /* Responsive */
+    @media (max-width: 600px) {
+      .custom-card {
+        width: 90%;
+        height: 180px;
+      }
+      .custom-card .overlay {
+        width: 100%;
+        font-size: 1em;
+      }
+    }
   </style>
-
+</head>
 <body>
-
 
   <!-- Composant 1 -->
   <div class="custom-card">
@@ -59,12 +72,5 @@
     </div>
   </div>
 
-
-
-
-
-
-
 </body>
 </html>
-

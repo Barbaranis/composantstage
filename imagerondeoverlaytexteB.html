@@ -1,55 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Composant</title>
+  <title>Composant 3 - Image ronde avec overlay</title>
+  <style>
+    /* ===========================
+       Composant 3 : Image ronde avec overlay texte
+    =========================== */
+    .round-image-container {
+      position: relative;
+      width: 200px;
+      margin: 20px auto;
+    }
+
+    .round-image-container img {
+      width: 100%;
+      border-radius: 50%;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .round-image-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .round-image-container .overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 0 0 50% 50%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .round-image-container {
+        width: 150px;
+      }
+      .round-image-container .overlay-text {
+        font-size: 12px;
+        padding: 6px;
+      }
+    }
+  </style>
 </head>
-<html>
-    <body>
+<body>
 
-
-<!-- Composant 3 -->
-<div class="round-image-container">
+  <!-- Composant 3 -->
+  <div class="round-image-container">
     <img src="image/imagedrapeau.png" alt="Exemple">
     <div class="overlay-text">Texte ici</div>
   </div>
 
 </body>
-
-<style>
-
-
-/* ===========================
-Composant 3 : Image ronde avec overlay texte
-=========================== */
-.round-image-container {
-position: relative;
-width: 200px;
-margin: 20px auto;
-}
-
-
-.round-image-container img {
-width: 100%;
-border-radius: 50%;
-display: block;
-}
-
-
-.round-image-container .overlay-text {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-background: rgba(0, 0, 0, 0.5);
-color: white;
-text-align: center;
-padding: 10px;
-font-size: 14px;
-border-radius: 0 0 50% 50%;
-}
-
-</style>
 </html>

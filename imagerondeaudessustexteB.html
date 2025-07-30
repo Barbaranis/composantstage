@@ -1,23 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Composant</title>
-</head>
-<html>
-    <body>
-    
-  <!-- Composant 4 -->
-  <div class="avatar-container">
-    <img src="image/imageRegion.png" alt="Exemple">
-    <div class="text">Texte sous l'image</div>
-  </div>
-    
-    </body>
-<style>
-/* ===========================
+  <title>Composant 4 - Avatar rond</title>
+  <style>
+    /* ===========================
        Composant 4 : Image ronde au-dessus du texte
     =========================== */
     .avatar-container {
@@ -29,20 +17,46 @@
       text-align: center;
     }
 
-
     .avatar-container img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .avatar-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
     .avatar-container .text {
       font-size: 16px;
       color: #333;
+      font-family: Arial, sans-serif;
     }
 
-</style>
+    /* Responsive */
+    @media (max-width: 600px) {
+      .avatar-container {
+        width: 150px;
+      }
+
+      .avatar-container img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Composant 4 -->
+  <div class="avatar-container">
+    <img src="image/imageRegion.png" alt="Exemple">
+    <div class="text">Texte sous l'image</div>
+  </div>
+
+</body>
 </html>

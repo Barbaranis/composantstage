@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composant Sommaire</title>
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background: #f4f6f8;
+      padding: 1rem;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #003366;
+    }
+
+    .sidebar ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.8rem;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #0055a5;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+      color: #003366;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>Sommaire</h2>
+    <ol>
+      <li>
+        <a href="#section-1">1 - Le système politique français</a>
+        <ul>
+          <li><a href="#section-1a">A - Un pouvoir politique unitaire</a></li>
+          <li><a href="#section-1b">B - Régime parlementaire et présidentiel</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#section-2">2 - Le cadre administratif français</a>
+        <ul>
+          <li><a href="#section-2a">A - Un cadre administratif déconcentré</a></li>
+          <li><a href="#section-2b">B - Un État décentralisé</a></li>
+        </ul>
+      </li>
+    </ol>
+  </aside>
+
+
+
+</body>
+</html>

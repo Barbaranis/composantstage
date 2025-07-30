@@ -1,25 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Composant</title>
-</head>
-<html>
-<body>
-
- <!-- Composant 5 -->
- <div class="text-container">
-    <div class="text-block">Bloc 1</div>
-    <div class="text-block">Bloc 2</div>
-    <div class="text-block">Bloc 3</div>
-  </div>
-
-</body>
-<style>
-
-/* ===========================
+  <title>Composant Blocs</title>
+  <style>
+    /* ===========================
        Composant 5 : Blocs de texte verticaux
     =========================== */
     .text-container {
@@ -30,36 +16,42 @@
       margin-top: 30px;
     }
 
-
     .text-block {
       background-color: #ddd;
       padding: 15px;
       border-radius: 10px;
       text-align: center;
       font-family: Arial, sans-serif;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
-
+    /* Largeurs spécifiques */
     .text-block:nth-child(1) { width: 100px; }
     .text-block:nth-child(2) { width: 150px; }
     .text-block:nth-child(3) { width: 200px; }
 
-
+    /* Effet au survol */
     .text-block:hover {
       transform: scale(1.05);
       background-color: #ccc;
     }
 
-
-
-
-    
     /* Responsive : blocs prennent la largeur sur mobile */
     @media (max-width: 600px) {
       .text-block {
         width: 80% !important;
       }
     }
-</style>
+  </style>
+</head>
+<body>
+
+  <!-- Composant 5 -->
+  <div class="text-container">
+    <div class="text-block">Bloc 1</div>
+    <div class="text-block">Bloc 2</div>
+    <div class="text-block">Bloc 3</div>
+  </div>
+
+</body>
 </html>

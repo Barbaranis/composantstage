@@ -1,20 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Composant</title>
+  <title>Composant 6 - Mise en page complexe</title>
+  <style>
+    /* ===========================
+       Composant 6 : Mise en page complexe
+    =========================== */
+    .component-6 {
+      max-width: 800px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .component-6 .top-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .component-6 .middle-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .component-6 .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .component-6 .box {
+      background-color: #e0e0e0;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      flex: 1;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .component-6 .box:hover {
+      transform: scale(1.05);
+      background-color: #d0d0d0;
+    }
+
+    .component-6 .image-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .component-6 .image-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .component-6 .image-box img:hover {
+      transform: scale(1.03);
+    }
+
+    .component-6 .bottom-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .component-6 .bottom-row .box {
+      width: 50%;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .component-6 .top-row,
+      .component-6 .middle-row {
+        flex-direction: column;
+      }
+      .component-6 .bottom-row .box {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<html>
 <body>
 
-    <!-- Composant 6 -->
-<div class="component-6">
+  <!-- Composant 6 -->
+  <div class="component-6">
     <div class="top-row">
       <div class="box">Texte</div>
       <div class="box">Texte</div>
     </div>
+
     <div class="middle-row">
       <div class="left-column">
         <div class="box">Texte</div>
@@ -24,93 +105,11 @@
         <img src="https://picsum.photos/200/200" alt="Image exemple">
       </div>
     </div>
+
     <div class="bottom-row">
       <div class="box">Texte</div>
     </div>
   </div>
+
 </body>
-
-   <style> 
-
-
-/* ===========================
-   Composant 6 : Mise en page complexe
-=========================== */
-.component-6 {
-  max-width: 800px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-
-.component-6 .top-row {
-  display: flex;
-  gap: 20px;
-}
-
-
-.component-6 .middle-row {
-  display: flex;
-  gap: 20px;
-}
-
-
-.component-6 .left-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-}
-
-
-.component-6 .box {
-  background-color: #e0e0e0;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  flex: 1;
-  font-family: Arial, sans-serif;
-}
-
-
-.component-6 .image-box {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.component-6 .image-box img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-
-.component-6 .bottom-row {
-  display: flex;
-  justify-content: center;
-}
-
-
-.component-6 .bottom-row .box {
-  width: 50%;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .component-6 .top-row,
-  .component-6 .middle-row {
-    flex-direction: column;
-  }
-  .component-6 .bottom-row .box {
-    width: 100%;
-  }
-}
-
-</style>
 </html>

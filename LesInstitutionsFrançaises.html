@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composant 3 - Image ronde avec overlay</title>
+</head>
+  <style>
+/* ==== SECTION INSTITUTIONS ==== */
+.institutions-section {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f8faff;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.institutions-section h2 {
+  color: #003366;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.institutions-section .intro-text {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.institutions-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.institution-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.institution-card img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.institution-card h3 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.institution-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.institution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .institutions-section {
+    padding: 30px 15px;
+  }
+  .institution-card img {
+    width: 80px;
+  }
+}
+
+</style>
+<body>
+    <section class="institutions-section">
+        <h2>Les Institutions Françaises</h2>
+        <p class="intro-text">
+          La France repose sur plusieurs institutions qui garantissent l'équilibre des pouvoirs et la bonne gouvernance.
+        </p>
+      
+        <div class="institutions-cards">
+          <!-- Présidence -->
+          <div class="institution-card">
+            <img src="imagePresident.png" alt="Présidence de la République">
+            <h3>Présidence</h3>
+            <p>Le Président de la République est le chef de l'État. Il nomme le Premier ministre, dirige la politique extérieure et est le garant de la Constitution.</p>
+          </div>
+      
+          <!-- Parlement -->
+          <div class="institution-card">
+            <img src="imageParlement.png" alt="Parlement">
+            <h3>Parlement</h3>
+            <p>Le Parlement français, composé de l'Assemblée nationale et du Sénat, vote les lois, contrôle l'action du Gouvernement et représente les citoyens.</p>
+          </div>
+      
+          <!-- Justice -->
+          <div class="institution-card">
+            <img src="imageJustice.png" alt="Justice">
+            <h3>Justice</h3>
+            <p>Le pouvoir judiciaire garantit l'application des lois et protège les libertés individuelles grâce à un système indépendant.</p>
+          </div>
+        </div>
+      </section>
+      
+</body>
+</html>
