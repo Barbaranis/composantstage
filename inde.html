@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadre politique et administratif</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===========================
+       STYLE GLOBAL
+    =========================== */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+
+    /* ===========================
+       SIDEBAR FIXÉE
+    =========================== */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background: #f4f6f8;
+      padding: 1rem;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #003366;
+    }
+
+
+    .sidebar ol {
+      list-style: none;
+      padding: 0;
+    }
+
+
+    .sidebar li {
+      margin-bottom: 0.8rem;
+    }
+
+
+    .sidebar a {
+      text-decoration: none;
+      color: #0055a5;
+    }
+
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ===========================
+       CONTENU PRINCIPAL
+    =========================== */
+    .page-a4 {
+      margin-left: 270px;
+      padding: 2rem;
+      max-width: 1200px;
+    }
+
+
+    .main-content h1 {
+      font-size: 2rem;
+      color: #222;
+      margin: 0.5rem 0;
+    }
+
+
+    .main-content span {
+      color: #0055a5;
+    }
+
+
+    .chapter-title {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+
+    /* ===========================
+       VIDÉO
+    =========================== */
+    .video-section {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+
+    .video-section video {
+      max-width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+
+    /* ===========================
+       SECTION A
+    =========================== */
+    .section-a {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+
+    .section-number {
+      background: #b3d4fc;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: #003366;
+      margin: 0;
+    }
+
+
+    /* ===========================
+       SOUS-SECTION
+    =========================== */
+    .sub-section h3 {
+      font-size: 1.4rem;
+      color: #0055a5;
+      margin-bottom: 1rem;
+    }
+
+
+    .content-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+
+    .text-box {
+      flex: 2;
+      background: #f0f7ff;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+
+    .image-box {
+      flex: 1;
+      text-align: center;
+    }
+
+
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+    }
+
+
+    /* ===========================
+       POUVOIRS
+    =========================== */
+    .powers p {
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+
+    .powers-list {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+
+    .power {
+      background: #f5eec2;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      text-align: center;
+      min-width: 150px;
+      font-weight: bold;
+      color: #333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* ===========================
+       RÉGIME POLITIQUE
+    =========================== */
+    .regime-section {
+      padding: 40px;
+      background: #f9f9f9;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+
+    .pouvoirs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+
+    .pouvoir {
+      background: #f5e16e;
+      border-radius: 50px;
+      padding: 15px 25px;
+      font-weight: bold;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+
+    .pouvoir:hover {
+      transform: scale(1.1);
+      background: #ffe766;
+    }
+
+
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #1a1a1a;
+    }
+
+
+    .intro {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+
+    .president-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background: #fff9e6;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+
+    .president-img {
+      width: 180px;
+      max-width: 100%;
+    }
+
+
+    .president-texte {
+      flex: 1;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+
+    .parlementaire {
+      background: #eef5ff;
+      border-radius: 15px;
+      padding: 20px;
+      font-size: 1em;
+      line-height: 1.6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+
+      .page-a4 {
+        margin-left: 0;
+      }
+
+
+      .content-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+
+      .powers-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+
+      .power {
+        margin-bottom: 0.8rem;
+      }
+
+
+      .president-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+
+      .president-img {
+        margin-bottom: 15px;
+      }
+    }
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+
+/* Section Président */
+.president-section {
+  background: linear-gradient(135deg, #f4f4f4, #eaeaea);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+
+.president-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.president-card img {
+  width: 200px;
+  margin-right: 20px;
+}
+
+
+.president-text {
+  flex: 1;
+  text-align: left;
+}
+
+
+.president-text h2 {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
+
+.president-text p {
+  line-height: 1.6;
+}
+
+
+/* Section Cadre administratif */
+.cadre-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+
+.cadre-section h2 {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
+
+.intro-text {
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+
+.card h3 {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
+
+.card p {
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* ==== GLOBAL ==== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+h2, h3 {
+  margin: 0;
+}
+
+
+/* ==== SECTION HEADER ==== */
+.section-header {
+  display: flex;
+  align-items: center;
+  background: #e6f0fa;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px;
+  gap: 15px;
+}
+
+
+.section-number {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+
+.section-header h2 {
+  font-size: 1.4rem;
+  color: #004080;
+}
+
+
+/* ==== INTRO TEXT ==== */
+.intro {
+  margin: 20px;
+  font-size: 1rem;
+}
+
+
+/* ==== CARDS ==== */
+.cards {
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.card {
+  background: white;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+
+.card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+
+.card h4 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <!-- ✅ Sommaire fixé -->
+  <aside class="sidebar">
+    <h2>Sommaire</h2>
+    <ol>
+      <li>
+        <a href="#section-1">1 - Le système politique français</a>
+        <ul>
+          <li><a href="#section-1a">A - Un pouvoir politique unitaire</a></li>
+          <li><a href="#section-1b">B - Régime parlementaire et présidentiel</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#section-2">2 - Le cadre administratif français</a>
+        <ul>
+          <li><a href="#section-2a">A - Un cadre administratif déconcentré</a></li>
+          <li><a href="#section-2b">B - Un État décentralisé</a></li>
+        </ul>
+      </li>
+    </ol>
+  </aside>
+
+
+  <!-- ✅ Contenu principal -->
+  <section class="page-a4">
+    <main class="main-content">
+      <h1>Le cadre politique et administratif <span>de la France</span></h1>
+      <h3 class="chapter-title">
+        CHAPITRE :
+        <span>Identifier le contexte et l’environnement de l’enfant pour un meilleur accompagnement</span>
+      </h3>
+    </main>
+
+
+    <!-- ✅ Vidéo -->
+    <div class="video-section">
+      <video src="image/video.png" controls></video>
+    </div>
+
+
+    <!-- ✅ Section A -->
+    <section id="section-1" class="section-a">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-number">01</span>
+          <h2>Le système politique Français</h2>
+        </div>
+      </div>
+
+
+      <!-- Sous-section A -->
+      <div id="section-1a" class="sub-section">
+        <h3>A. Un pouvoir politique unitaire</h3>
+        <div class="content-container">
+          <div class="text-box">
+            <p>
+              Le cadre politique de la France est unitaire : les lois sont les mêmes pour tous.
+              Le système judiciaire est semblable sur tout le territoire.
+              La France est « une République, indivisible, laïque, démocratique et sociale ».
+            </p>
+          </div>
+          <div class="image-box">
+            <img src="image/imagedrapeau.png" alt="Drapeau français" />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pouvoirs -->
+      <div class="powers">
+        <p>Le pouvoir politique est défini par la Constitution, détaillant les trois pouvoirs :</p>
+        <div class="powers-list">
+          <div class="power">Pouvoir exécutif</div>
+          <div class="power">Pouvoir législatif</div>
+          <div class="power">Pouvoir judiciaire</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ✅ Sous-section B -->
+    <section id="section-1b" class="regime-section">
+      <h2>B. Régime parlementaire et présidentiel</h2>
+      <p class="intro">
+        La Vème République organise un régime à la fois présidentiel et parlementaire.
+      </p>
+
+
+      <div class="president-container">
+        <img src="image/imagePresident.png" alt="Président" class="president-img">
+        <div class="president-texte">
+          <p>
+            Le président de la République est chef de l’État et chef des armées et une figure centrale du régime.
+            Il assure, par son arbitrage, « le fonctionnement régulier des pouvoirs publics ».
+            Son autorité s’est progressivement renforcée.
+            Le président de la République est élu pour 5 ans au suffrage universel direct.
+            Il nomme son Premier ministre qui forme le gouvernement avec les ministres et les secrétaires d’État.
+            Le Premier ministre dirige l’action du Gouvernement qui « détermine et conduit la politique de la Nation ».
+          </p>
+        </div>
+      </div>
+
+
+      <div class="parlementaire">
+        <p>
+          Le régime politique français est aussi parlementaire.
+          Il y a une séparation des pouvoirs entre l’exécutif et le législatif (ainsi que le judiciaire).
+          <strong>Le pouvoir législatif est composé de deux chambres : l’Assemblée Nationale et le Sénat qui votent les lois.</strong>
+        </p>
+      </div>
+    </section>
+  </section>
+<!-- Section Cadre administratif -->
+  <section class="cadre-section">
+    <h2>Le cadre administratif français</h2>
+    <p class="intro-text">La France dispose d'un cadre administratif décentralisé avec plusieurs niveaux de gestion :</p>
+    
+    <div class="cards-container">
+      <!-- Région -->
+      <div class="card">
+        <img src="imageRegion.png" alt="Région">
+        <h3>Régions (22)</h3>
+        <p>Le préfet de région gère les services déconcentrés de l'État : police nationale, direction régionale de la jeunesse...</p>
+      </div>
+      <!-- Département -->
+      <div class="card">
+        <img src="imageDepartement.png" alt="Département">
+        <h3>Départements (101)</h3>
+        <p>Le préfet de département représente l'État et dirige les services extérieurs au niveau départemental.</p>
+      </div>
+      <!-- Mairie -->
+      <div class="card">
+        <img src="imageMairie.png" alt="Mairie">
+        <h3>Mairies (36 000)</h3>
+        <p>Le maire, élu par le conseil municipal, détient des compétences en matière d'état civil, police administrative et pouvoir exécutif local.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</body>
+</html>
+

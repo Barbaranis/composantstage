@@ -1,0 +1,218 @@
+<html>
+  <body>
+    <!-- ✅ Section A -->
+    <section id="section-1" class="section-a">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-number">01</span>
+          <h2>Le système politique Français</h2>
+        </div>
+      </div>
+
+      <!-- Sous-section A -->
+      <div id="section-1a" class="sub-section">
+        <h3>A. Un pouvoir politique unitaire</h3>
+        <div class="content-container">
+          <div class="text-box">
+            <p>
+              Le cadre politique de la France est unitaire : les lois sont les mêmes pour tous.
+              Le système judiciaire est semblable sur tout le territoire.
+              La France est « une République, indivisible, laïque, démocratique et sociale ».
+            </p>
+          </div>
+          <div class="image-box">
+            <img src="image/imagedrapeau.png" alt="Drapeau français" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pouvoirs -->
+      <div class="powers">
+        <p>Le pouvoir politique est défini par la Constitution, détaillant les trois pouvoirs :</p>
+        <div class="powers-list">
+          <!-- Carte Pouvoir exécutif -->
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">
+                Pouvoir exécutif
+              </div>
+              <div class="card-back">
+                Chargé d'appliquer les lois et de diriger l'administration.
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte Pouvoir législatif -->
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">
+                Pouvoir législatif
+              </div>
+              <div class="card-back">
+                Élabore et vote les lois applicables dans tout le pays.
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte Pouvoir judiciaire -->
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">
+                Pouvoir judiciaire
+              </div>
+              <div class="card-back">
+                Interprète les lois et rend la justice en toute indépendance.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <style>
+    /* ===========================
+       SECTION A
+    =========================== */
+    .section-a {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+   
+      border-radius: 10px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #D5E9FF;
+      color: #5F8BBC;
+      border: 3px solid #5F8BBC; /* contour autour du titre */
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .section-number {
+      background: #5F8BBC;
+      background-size: cover;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+   
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: #003366;
+      margin: 0;
+    }
+
+    /* ===========================
+       SOUS-SECTION
+    =========================== */
+    .sub-section h3 {
+      font-size: 1.4rem;
+      color: #0055a5;
+      margin-bottom: 1rem;
+    }
+
+    .content-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .text-box {
+      flex: 2;
+      background: #f0f7ff;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .image-box {
+      flex: 1;
+      text-align: center;
+
+    }
+
+    .image-box img {
+  width: 190px; /* ou 200px selon ton besoin */
+  height: auto;
+}
+
+    /* ===========================
+       POUVOIRS (Cartes flip)
+    =========================== */
+    .powers p {
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .powers-list {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .power-card {
+      width: 180px;
+      height: 120px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .power-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 110%;
+      height: 80%;
+      backface-visibility: hidden;
+      border-radius:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20%;
+     
+    }
+
+    .card-front {
+      background: #f5eec2;
+      color: #333;
+    }
+
+    .card-back {
+      background: #003366;
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 0.8rem;
+    }
+  </style>
+</html>
