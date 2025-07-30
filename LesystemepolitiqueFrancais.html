@@ -1,13 +1,292 @@
-<html>
-  <body>
-    <!-- ✅ Section A -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Système politique Français</title>
+  <style>
+    /* ===========================
+       GLOBAL
+    =========================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+
+    /* ===========================
+       CONTENEUR PRINCIPAL
+    =========================== */
+    .main-content {
+      margin-left: 270px; /* espace pour la sidebar */
+      padding: 2rem;
+      max-width: 1000px;
+    }
+
+
+    @media (max-width: 900px) {
+      .main-content {
+        margin-left: 0; /* en mobile : plein écran */
+        padding: 1rem;
+      }
+    }
+
+
+    /* ===========================
+       EN-TÊTE DE SECTION
+    =========================== */
+    .section-header {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e6f0fb;
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border: 2px solid #3b6ea5e3;
+      margin-bottom: 1.5rem;
+      width: 60%;
+      height: 80%;
+    }
+
+
+    .section-number {
+      background-color: #3b6ea5;
+      color: white;
+      font-weight: bold;
+      font-size: clamp(14px, 2vw, 20px);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+
+    .section-title {
+      color: #3b6ea5;
+      font-size: clamp(12px, 2vw, 20px);
+      font-weight: 600;
+      padding: 6px 16px;
+      white-space: nowrap;
+      margin-left: 15%;
+    }
+
+
+    /* ===========================
+       SOUS-SECTION
+    =========================== */
+    .sub-section h3 {
+      font-size: 1.3rem;
+      color: #0055a5;
+      margin-bottom: 1rem;
+    }
+
+
+    .content-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+
+    .text-box {
+      flex: 2;
+      background: #f0f7ff;
+      padding: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #d0e0f0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+
+    .image-box {
+      flex: 1;
+      text-align: center;
+    }
+
+
+    .image-box img {
+      width: 170px;
+      height: auto;
+      display: block;
+      margin-left: -3%;
+    }
+
+
+    /* ===========================
+       POUVOIRS (CARTES OVALES)
+    =========================== */
+    .powers p {
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+
+    .powers-list {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-left: -20%;
+    }
+
+
+    .power-card {
+      width: 180px;
+      height: 100px;
+      perspective: 1000px;
+      
+    }
+
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+
+    
+    }
+
+
+    .power-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      
+    }
+
+
+    .card-front {
+      background: #f5eec2;
+      color: #333;
+      margin-left: -10%;
+    }
+
+
+    .card-back {
+      background: #003366;
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 0.8rem;
+    }
+
+
+
+
+
+
+/* Bloc texte + drapeau */
+.section-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* permet le passage à la ligne si besoin */
+}
+
+
+/* Drapeau */
+.section-flag {
+  max-width: 120px;
+  flex-shrink: 0;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Le drapeau passe sous le texte */
+  .content-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+
+  /* Le titre reste lisible et centré */
+  .section-header {
+    display: flex;
+    min-width: auto;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+.sub-section h3 {
+  font-size: 0.8rem;
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+.text-box{
+
+}
+
+      .image-box {
+        margin-top: 1rem;
+      }
+
+
+      .powers-list {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+
+      .card-inner {
+        margin-left: 20%;
+        height: 80%;
+        margin-top: 10%;
+      }
+    
+    }
+    
+  </style>
+</head>
+<body>
+  
+  <div class="main-content">
+    <!-- SECTION PRINCIPALE -->
     <section id="section-1" class="section-a">
       <div class="section-header">
-        <div class="section-title">
-          <span class="section-number">01</span>
-          <h2>Le système politique Français</h2>
-        </div>
+        <div class="section-number">01</div>
+        <div class="section-title">Le système politique Français</div>
       </div>
+
 
       <!-- Sous-section A -->
       <div id="section-1a" class="sub-section">
@@ -26,193 +305,33 @@
         </div>
       </div>
 
+
       <!-- Pouvoirs -->
       <div class="powers">
         <p>Le pouvoir politique est défini par la Constitution, détaillant les trois pouvoirs :</p>
         <div class="powers-list">
-          <!-- Carte Pouvoir exécutif -->
           <div class="power-card">
             <div class="card-inner">
-              <div class="card-front">
-                Pouvoir exécutif
-              </div>
-              <div class="card-back">
-                Chargé d'appliquer les lois et de diriger l'administration.
-              </div>
+              <div class="card-front">Pouvoir exécutif</div>
+              <div class="card-back">Chargé d'appliquer les lois et de diriger l'administration.</div>
             </div>
           </div>
-
-          <!-- Carte Pouvoir législatif -->
           <div class="power-card">
             <div class="card-inner">
-              <div class="card-front">
-                Pouvoir législatif
-              </div>
-              <div class="card-back">
-                Élabore et vote les lois applicables dans tout le pays.
-              </div>
+              <div class="card-front">Pouvoir législatif</div>
+              <div class="card-back">Élabore et vote les lois applicables dans tout le pays.</div>
             </div>
           </div>
-
-          <!-- Carte Pouvoir judiciaire -->
           <div class="power-card">
             <div class="card-inner">
-              <div class="card-front">
-                Pouvoir judiciaire
-              </div>
-              <div class="card-back">
-                Interprète les lois et rend la justice en toute indépendance.
-              </div>
+              <div class="card-front">Pouvoir judiciaire</div>
+              <div class="card-back">Interprète les lois et rend la justice en toute indépendance.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  </body>
-
-  <style>
-    /* ===========================
-       SECTION A
-    =========================== */
-    .section-a {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fff;
-   
-      border-radius: 10px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: #D5E9FF;
-      color: #5F8BBC;
-      border: 3px solid #5F8BBC; /* contour autour du titre */
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-    }
-
-    .section-number {
-      background: #5F8BBC;
-      background-size: cover;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 1.2rem;
-   
-    }
-
-    .section-title h2 {
-      font-size: 1.8rem;
-      color: #003366;
-      margin: 0;
-    }
-
-    /* ===========================
-       SOUS-SECTION
-    =========================== */
-    .sub-section h3 {
-      font-size: 1.4rem;
-      color: #0055a5;
-      margin-bottom: 1rem;
-    }
-
-    .content-container {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .text-box {
-      flex: 2;
-      background: #f0f7ff;
-      padding: 1rem;
-      border-radius: 10px;
-    }
-
-    .image-box {
-      flex: 1;
-      text-align: center;
-
-    }
-
-    .image-box img {
-  width: 190px; /* ou 200px selon ton besoin */
-  height: auto;
-}
-
-    /* ===========================
-       POUVOIRS (Cartes flip)
-    =========================== */
-    .powers p {
-      margin-bottom: 1rem;
-      font-weight: bold;
-    }
-
-    .powers-list {
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .power-card {
-      width: 180px;
-      height: 120px;
-      perspective: 1000px;
-    }
-
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      cursor: pointer;
-    }
-
-    .power-card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 110%;
-      height: 80%;
-      backface-visibility: hidden;
-      border-radius:100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20%;
-     
-    }
-
-    .card-front {
-      background: #f5eec2;
-      color: #333;
-    }
-
-    .card-back {
-      background: #003366;
-      color: white;
-      transform: rotateY(180deg);
-      font-size: 0.8rem;
-    }
-  </style>
+  </div>
+</body>
 </html>
+
