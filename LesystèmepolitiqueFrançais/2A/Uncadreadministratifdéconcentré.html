@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le cadre administratif français</title>
+  <style>
+    /* ===========================
+       GLOBAL
+    =========================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+
+    /* ===========================
+       SECTION HEADER (Titre principal encadré)
+    =========================== */
+    .section-header {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e6f0fb; /* Bleu clair */
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      flex-wrap: nowrap;
+      border: 2px solid #3b6ea5e3;
+      margin: 2rem;
+     
+    }
+
+
+    .section-number {
+      background-color: #5F8BBC; /* Bleu foncé */
+      color: white;
+      font-weight: bold;
+      font-size: clamp(12px, 3vw, 30px);
+      padding: 6px 14px;
+      border-radius: 5px 0 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+
+    .section-title {
+      color: #5F8BBC;
+      font-size: clamp(20px, 8vw, 26px);
+      font-weight: 600;
+      padding: 6px 16px;
+      white-space: nowrap;
+      flex-shrink: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+
+    /* ===========================
+       SOUS-TITRE (A. Un cadre...)
+    =========================== */
+    .sub-section-title {
+      color: #5F8BBC; /*bleu*/
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 1rem 2rem 0.5rem 2rem;
+    }
+
+
+    /* ===========================
+       TEXTE INTRODUCTION ENCADRÉ
+    =========================== */
+    .intro-container {
+      max-width: 800px;
+      margin: 0 2rem 2rem 2rem;
+      background-color: #f9f9f9;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+    }
+
+
+    .intro-container p {
+      margin: 0.5rem 0;
+    }
+
+
+    /* ===========================
+       CONTENEUR PRINCIPAL (cartes)
+    =========================== */
+    .content-container {
+      background-color: #F0ECC8; /* beige */
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem;
+    }
+
+
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+
+    .card {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      background-color: #F0ECC8;
+    }
+
+
+    .card img {
+      width: 100%;
+      max-width: 200px;
+      margin-bottom: 1rem;
+    }
+
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+
+    .card-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+
+    /* ===========================
+       RESPONSIVE MOBILE
+    =========================== */
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+
+      .card {
+        max-width: 90%;
+      }
+
+
+      .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+
+      .section-number {
+        border-radius: 8px 8px 0 0;
+        width: 100%;
+        justify-content: center;
+      }
+
+
+      .section-title {
+        border-radius: 0 0 8px 8px;
+        width: 100%;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- TITRE PRINCIPAL -->
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-title">Le cadre administratif français</div>
+  </div>
+
+
+  <!-- SOUS-TITRE -->
+  <h3 class="sub-section-title">A. Un cadre administratif déconcentré</h3>
+
+
+  <!-- TEXTE D'INTRODUCTION ENCADRÉ -->
+  <div class="intro-container">
+    <p>La déconcentration est la déclinaison des pouvoirs à un niveau local de l’État.</p>
+    <p>Les agents de l’État qui disposent de ce pouvoir sont à la tête de circonscriptions administratives comme la région, le département et les mairies.</p>
+    <p>Il existe actuellement en France trois niveaux de collectivités territoriales et de circonscriptions d’action de l’État (dont les représentants sont respectivement le maire, le préfet et le préfet de région) :</p>
+  </div>
+
+
+  <!-- CONTENEUR DES CARTES -->
+  <div class="content-container">
+    <div class="cards">
+      <div class="card">
+        <img src="../../image/imageRegion.png" alt="Carte Région">
+        <div class="card-title">Régions (22)</div>
+        <div class="card-text">
+          Le préfet de région gère les services déconcentrés de l’État dans la région :
+          police nationale, direction régionale de la jeunesse…
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="../../image/imageDepartement.png" alt="Carte Département">
+        <div class="card-title">Département (101)</div>
+        <div class="card-text">
+          Le préfet de département est le représentant de l’État.
+          Il dirige les services extérieurs de l’État.
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="../../image/imageMairie.png" alt="Carte Mairie">
+        <div class="card-title">Mairies (36 000)</div>
+        <div class="card-text">
+          Le maire, élu par le conseil municipal, est un représentant de l’État dans la commune
+          et le détenteur du pouvoir exécutif local.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+

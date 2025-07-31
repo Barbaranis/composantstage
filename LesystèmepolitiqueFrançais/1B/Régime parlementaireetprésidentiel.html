@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régime parlementaire et présidentiel</title>
+  <style>
+    /* ===========================
+       STYLE GLOBAL
+    ============================ */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+
+    /* ===========================
+       SECTION : REGIME
+    ============================ */
+    .regime-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-top: 10%;
+    }
+
+
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #5F8BBC;
+      margin-bottom: 10px;
+    }
+
+
+    .section-intro {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+
+    /* ===========================
+       CONTENEUR IMAGE + TEXTE
+    ============================ */
+    .regime-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+
+    .president-img {
+      flex: 1;
+      max-width: 250px;
+    }
+
+
+    .president-img img {
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* TEXTE DU PRÉSIDENT */
+    .president-text {
+      flex: 2;
+      min-width: 300px;
+    }
+
+
+    .highlight-box {
+      background: #f8f8e8;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      line-height: 1.8;
+      width: 50%;
+    }
+
+
+    /* ===========================
+       TEXTE COMPLÉMENTAIRE
+    ============================ */
+    .section-details {
+      font-size: 1rem;
+      margin-top: 15px;
+    }
+
+
+    /* ===========================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 768px) {
+      .regime-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+
+      .president-img {
+        max-width: 200px;
+        margin-bottom: 15px;
+      }
+
+
+      .president-text {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <section class="regime-section">
+    <!-- TITRE DE LA SECTION -->
+    <h2 class="section-title">B. Régime parlementaire et présidentiel</h2>
+    <p class="section-intro">
+      La Vème république organise un régime à la fois présidentiel et parlementaire.
+    </p>
+
+
+    <!-- CONTENEUR PRINCIPAL -->
+    <div class="regime-container">
+      <!-- IMAGE DU PRÉSIDENT -->
+      <div class="president-img">
+        <img src="../../image/imagePresident.png" alt="Illustration du Président">
+      </div>
+
+
+      <!-- TEXTE DU PRÉSIDENT -->
+      <div class="president-text">
+        <div class="highlight-box">
+          <p>
+            <strong>Le président de la République</strong> est chef de l’État et chef des armées et une figure centrale du régime.
+            Il assure, par son arbitrage, « le fonctionnement régulier des pouvoirs publics ». 
+            Son autorité s’est progressivement renforcée. 
+            Le président de la République est élu pour 5 ans au suffrage universel direct. 
+            Il nomme son premier-ministre qui forme le gouvernement avec les ministres et les secrétaires d’État. 
+            Le Premier ministre dirige l’action du Gouvernement qui « détermine et conduit la politique de la Nation ».
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TEXTE COMPLÉMENTAIRE -->
+    <p class="section-details">
+      Le régime politique français est aussi parlementaire. Il y a une séparation des pouvoirs entre l’exécutif et le législatif (ainsi que le judiciaire). 
+      <strong>Le pouvoir législatif est composé de deux chambres : l’Assemblée Nationale et le Sénat qui votent les lois.</strong>
+    </p>
+
+
+    <p class="section-details">
+      L’État décline son organisation unitaire dans un cadre administratif déconcentré et décentralisé.
+    </p>
+  </section>
+
+
+</body>
+</html>
+
