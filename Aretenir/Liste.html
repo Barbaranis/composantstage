@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composant</title>
+  <style>
+     /* ===========================
+       Composant 2 : Liste des points
+    =========================== */
+
+    .a-retenir-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      text-align: left;
+    }
+
+    .a-retenir-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    /* Numéro */
+    .a-retenir-number {
+      background-color: #3b6ea5;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* Ligne verticale entre les numéros */
+    .a-retenir-item:not(:last-child) .a-retenir-number::after {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 25px;
+      background-color: #cbd6e2;
+    }
+
+    /* Texte */
+    .a-retenir-content {
+      flex: 1;
+    }
+
+    .a-retenir-content h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #2b5d92;
+    }
+
+    .a-retenir-content p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+
+
+
+    /* ===========================
+       Responsive
+    =========================== */
+    @media (max-width: 600px) {
+
+    .a-retenir-content h4 {
+        font-size: 14px;
+      }
+      .a-retenir-content p {
+        font-size: 13px;
+      }
+    }
+
+</style>
+</head>
+<body>
+     <!-- ===========================
+         Composant 2 : Liste d'éléments
+    =========================== -->
+    <div class="a-retenir-list">
+
+        <!-- Composant 2 : Élément 1 -->
+        <div class="a-retenir-item">
+          <div class="a-retenir-number">01</div>
+          <div class="a-retenir-content">
+            <h4>L’État français est composé d’une nation et d’un territoire délimité.</h4>
+            <p>L’État français dispose d’un système politique unitaire qui fonctionne grâce à un régime parlementaire et présidentiel. Ce régime a été défini dans le cadre de la constitution de la Vème République (1958).</p>
+          </div>
+        </div>
+  
+        <!-- Composant 2 : Élément 2 -->
+        <div class="a-retenir-item">
+          <div class="a-retenir-number">02</div>
+          <div class="a-retenir-content">
+            <h4>Le cadre politique de la France est unitaire</h4>
+            <p>Les lois sont les mêmes pour tous. Le système judiciaire est semblable sur tout le territoire. La France est « une République, indivisible, laïque, démocratique et sociale ».</p>
+          </div>
+        </div>
+  
+        <!-- Composant 2 : Élément 3 -->
+        <div class="a-retenir-item">
+          <div class="a-retenir-number">03</div>
+          <div class="a-retenir-content">
+            <h4>Le pouvoir politique est défini par la Constitution</h4>
+            <p>Détaillant les trois pouvoirs : exécutif, législatif et judiciaire.</p>
+          </div>
+        </div>
+  
+        <!-- Composant 2 : Élément 4 -->
+        <div class="a-retenir-item">
+          <div class="a-retenir-number">04</div>
+          <div class="a-retenir-content">
+            <h4>La décentralisation est différente de la déconcentration</h4>
+            <p>Le pouvoir accordé à la collectivité décentralisée est indépendant du pouvoir de l’État. Le pouvoir est alors partagé.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    </body>
+    </html>

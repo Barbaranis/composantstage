@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>composant</title>
+  <style>
+   .powers p {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.powers-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.power-card {
+  width: 180px;
+  height: 100px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.power-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.card-front {
+  background: #f5eec2;
+  color: #333;
+}
+
+.card-back {
+  background: #003366;
+  color: white;
+  transform: rotateY(180deg);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .powers-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="powers">
+        <p>Le pouvoir politique est défini par la Constitution, détaillant les trois pouvoirs :</p>
+        <div class="powers-list">
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">Pouvoir exécutif</div>
+              <div class="card-back">Chargé d'appliquer les lois et de diriger l'administration.</div>
+            </div>
+          </div>
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">Pouvoir législatif</div>
+              <div class="card-back">Élabore et vote les lois applicables dans tout le pays.</div>
+            </div>
+          </div>
+          <div class="power-card">
+            <div class="card-inner">
+              <div class="card-front">Pouvoir judiciaire</div>
+              <div class="card-back">Interprète les lois et rend la justice en toute indépendance.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
+
+
+

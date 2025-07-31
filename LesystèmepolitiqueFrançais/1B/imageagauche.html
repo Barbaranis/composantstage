@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>composant</title>
+  <style>
+   /* Section Président */
+
+   .regime-section {
+      padding: 40px;
+      background: #f9f9f9;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+
+
+
+
+.president-section {
+  background: linear-gradient(135deg, #f4f4f4, #eaeaea);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+
+.president-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.president-card img {
+  width: 200px;
+  margin-right: 20px;
+}
+
+
+.president-text {
+  flex: 1;
+  text-align: left;
+}
+
+
+.president-text h2 {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
+
+.president-text p {
+  line-height: 1.6;
+}
+.president-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background: #fff9e6;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+
+    .president-img {
+      width: 180px;
+      max-width: 100%;
+    }
+
+
+    .president-texte {
+      flex: 1;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+
+
+
+
+
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 768px) {
+    
+    .president-container {
+        flex-direction: column;
+        text-align: center;
+        
+      }
+
+
+      .president-img {
+        margin-bottom: 15px;
+      }
+    }
+
+
+    </style>
+</head>
+<body>
+
+
+<!-- ✅ Sous-section B -->
+<section id="section-1b" class="regime-section">
+    <h2>B. Régime parlementaire et présidentiel</h2>
+    <p class="intro">
+      La Vème République organise un régime à la fois présidentiel et parlementaire.
+    </p>
+
+
+    <div class="president-container">
+      <img src="../../image/imagePresident.png" alt="Président" class="president-img">
+      <div class="president-texte">
+        <p>
+          Le président de la République est chef de l’État et chef des armées et une figure centrale du régime.
+          Il assure, par son arbitrage, « le fonctionnement régulier des pouvoirs publics ».
+          Son autorité s’est progressivement renforcée.
+          Le président de la République est élu pour 5 ans au suffrage universel direct.
+          Il nomme son Premier ministre qui forme le gouvernement avec les ministres et les secrétaires d’État.
+          Le Premier ministre dirige l’action du Gouvernement qui « détermine et conduit la politique de la Nation ».
+        </p>
+      </div>
+    </div>
+    

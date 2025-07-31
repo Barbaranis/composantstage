@@ -1,0 +1,71 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composant</title>
+  
+<body>
+<section id="section-1" class="section-a">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-title">Le système politique Français</div>
+    </div>
+  </section>
+  </body>
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .main-content {
+    margin-left: 270px;
+    padding: 2rem;
+    max-width: 1000px;
+  }
+  
+  @media (max-width: 900px) {
+    .main-content {
+      margin-left: 0;
+      padding: 1rem;
+    }
+  }
+  
+  .section-header {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e6f0fb;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #3b6ea5e3;
+    margin-bottom: 1.5rem;
+    width: 60%;
+  }
+  
+  .section-number {
+    background-color: #3b6ea5;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 2vw, 20px);
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .section-title {
+    color: #3b6ea5;
+    font-size: clamp(12px, 2vw, 20px);
+    font-weight: 600;
+    padding: 6px 16px;
+    margin-left: 15%;
+  }
+</style>  

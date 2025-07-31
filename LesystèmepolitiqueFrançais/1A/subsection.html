@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>composant</title>
+  <style>
+
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.text-box {
+  flex: 2;
+  background: #f0f7ff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #d0e0f0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.image-box {
+  flex: 1;
+  text-align: center;
+}
+
+.image-box img {
+  width: 170px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="section-1a" class="sub-section">
+    
+    <div class="content-container">
+      <div class="text-box">
+        <p>
+          Le cadre politique de la France est unitaire : les lois sont les mêmes pour tous.
+          Le système judiciaire est semblable sur tout le territoire.
+          La France est « une République, indivisible, laïque, démocratique et sociale ».
+        </p>
+      </div>
+      <div class="image-box">
+        <img src="../../image/imagedrapeau.png" alt="Drapeau français" />
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

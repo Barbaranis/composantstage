@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>composant</title>
+  <style>
+ /* ===========================
+       Composant 1 : Conteneur principal
+    =========================== */
+    .a-retenir-container {
+      max-width: 800px;
+      margin: 40px auto;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .a-retenir-image {
+      max-width: 150px;
+      margin: 0 auto 20px;
+    }
+
+    .a-retenir-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+
+
+
+      /* ===========================
+       Responsive
+    =========================== */
+    @media (max-width: 600px) {
+      .a-retenir-container {
+        padding: 10px;
+      }
+      .a-retenir-image {
+        max-width: 100px;
+      }
+      .a-retenir-title {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       Composant 1 : En-tête A RETENIR
+  =========================== -->
+  <div class="a-retenir-container">
+    <img src="../image/undraw_book-lover_m9n3 1.png" alt="Lecture" class="a-retenir-image">
+    <div class="a-retenir-title">A RETENIR</div>
+</body>
+</html>
