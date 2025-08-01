@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composants Combinés - Partie 1</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Classe pour espacer les composants */
+    .component {
+      margin-bottom: 20px;
+    }
+
+    /* Classes génériques pour les composants existants */
+    .common-container {
+      width: 700px;
+      margin: 0 auto;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #F0ECC8;
+    }
+
+    .common-row {
+      width: 100%;
+      min-height: 80px;
+      height: auto;
+      background: #F7F5E9;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .common-image {
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .common-text {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+      margin: 0;
+      line-height: 1.6;
+      padding: 10px;
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    .common-text-box {
+      background-color: rgba(250, 248, 247, 0.7);
+      padding: 20px;
+      border-radius: 20px;
+      overflow-y: auto;
+    }
+
+    .common-title {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Media queries génériques pour les composants existants */
+    @media screen and (max-width: 768px) {
+      .common-container {
+        width: 500px;
+        padding: 15px;
+        border-radius: 15px;
+        gap: 5px;
+      }
+
+      .common-row {
+        border-radius: 6px;
+        padding: 8px;
+      }
+
+      .common-image {
+        border-radius: 6px;
+      }
+
+      .common-text {
+        font-size: 14px;
+        line-height: 1.3;
+        padding: 8px;
+      }
+
+      .common-text-box {
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      .common-title {
+        font-size: 14px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .common-container {
+        width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        gap: 5px;
+      }
+
+      .common-row {
+        border-radius: 4px;
+        padding: 5px;
+      }
+
+      .common-image {
+        border-radius: 4px;
+      }
+
+      .common-text {
+        font-size: 12px;
+        line-height: 1.2;
+        padding: 5px;
+      }
+
+      .common-text-box {
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .common-title {
+        font-size: 12px;
+      }
+    }
+
+    /* Styles pour les composants existants */
+    .box2lignes-container, .box3lignes-container {
+      width: 600px;
+    }
+
+    .imagegauche-container, .imagedroite-container {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .exemple-container {
+      background: #F1F0E9;
+      flex-direction: row;
+      width: 600px;
+    }
+
+    .imagehaut-container, .textehaut-container {
+      width: 400px;
+    }
+
+    .imagehaut2petites-container, .images2gauche1droite-container {
+      width: 400px;
+    }
+
+    .box2lignes-row, .box3lignes-row {
+      min-height: 80px;
+      height: auto;
+    }
+
+    .imagegauche-row, .imagedroite-row {
+      height: 100%;
+      border-radius: 20px;
+      gap: 0;
+    }
+
+    .box2lignes-image, .box3lignes-image {
+      width: 174px;
+      margin-right: 10px;
+    }
+
+    .imagegauche-image {
+      width: 200px;
+      border-radius: 20px;
+      padding-right: 10px;
+    }
+
+    .imagedroite-image {
+      width: 200px;
+      border-radius: 20px;
+      padding-left: 10px;
+      margin-right: 0;
+    }
+
+    .imagegauche-text-box, .imagedroite-text-box {
+      flex: 0 0 460px;
+      min-width: 460px;
+    }
+
+    .exemple-rectangle {
+      width: 120px;
+      background: #B3CAE3;
+      border-radius: 8px;
+    }
+
+    .imagehaut-image {
+      width: 100%;
+      height: 300px;
+      border-radius: 20px;
+    }
+
+    .textehaut-image {
+      width: calc(100% - 40px);
+      height: 300px;
+      border-radius: 20px;
+      margin: 0 20px 20px 20px;
+    }
+
+    .imagehaut-text-box, .textehaut-text-box {
+      margin: 20px;
+      min-height: 100px;
+    }
+
+    .imagehaut2petites-container {
+      height: 500px;
+    }
+
+    .imagehaut2petites-top-image {
+      width: 100%;
+      height: 50%;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .imagehaut2petites-bottom {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+      gap: 10px;
+      height: 50%;
+    }
+
+    .imagehaut2petites-bottom-image {
+      width: 50%;
+      height: 100%;
+      border-radius: 20px;
+    }
+
+    .images2gauche1droite-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .images2gauche1droite-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 65%;
+    }
+
+    .images2gauche1droite-left-image {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+    }
+
+    .images2gauche1droite-right-image {
+      width: 30%;
+      height: 310px;
+      border-radius: 8px;
+    }
+
+    .textehaut-text-box {
+      height: 200px;
+    }
+
+    .colonnes2-container {
+      width: 270px;
+      height: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: none;
+    }
+
+    .colonnes2-rectangle-container {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .colonnes2-rectangle {
+      width: 120px;
+      height: 40px;
+      background: #B3CAE3;
+      border-radius: 8px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .colonnes2-yellow-rectangle {
+      width: 120px;
+      height: 0;
+      background: #F0ECC8;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      transition: height 0.3s ease;
+    }
+
+    .colonnes2-scroll-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      max-height: 340px;
+      scroll-behavior: smooth;
+    }
+
+    .colonnes2-scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .colonnes2-toggle:checked + .colonnes2-rectangle + .colonnes2-yellow-rectangle {
+      height: 340px;
+    }
+
+    .colonnes2-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+      margin: 10px;
+      line-height: 1.4;
+    }
+
+    .colonnes2-scroll-indicator {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      display: none;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .colonnes2-toggle:checked + .colonnes2-rectangle + .colonnes2-yellow-rectangle .colonnes2-scroll-indicator {
+      display: block;
+    }
+
+    .colonnes2-scroll-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      opacity: 1;
+    }
+
+    .colonnes2-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .colonnes2-toggle {
+      display: none;
+    }
+
+    .colonnes3-container {
+      width: 380px;
+      height: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: none;
+    }
+
+    .colonnes3-rectangle-container {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .colonnes3-rectangle {
+      width: 120px;
+      height: 40px;
+      background: #B3CAE3;
+      border-radius: 8px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .colonnes3-yellow-rectangle {
+      width: 120px;
+      height: 0;
+      background: #F0ECC8;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      transition: height 0.3s ease;
+    }
+
+    .colonnes3-scroll-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      max-height: 340px;
+      scroll-behavior: smooth;
+    }
+
+    .colonnes3-scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .colonnes3-toggle:checked + .colonnes3-rectangle + .colonnes3-yellow-rectangle {
+      height: 340px;
+    }
+
+    .colonnes3-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+      margin: 10px;
+      line-height: 1.4;
+    }
+
+    .colonnes3-scroll-indicator {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      display: none;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .colonnes3-toggle:checked + .colonnes3-rectangle + .colonnes3-yellow-rectangle .colonnes3-scroll-indicator {
+      display: block;
+    }
+
+    .colonnes3-scroll-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      opacity: 1;
+    }
+
+    .colonnes3-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .colonnes3-toggle {
+      display: none;
+    }
+
+    .lignes2-container {
+      width: 582px;
+      height: 190px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: none;
+    }
+
+    .lignes2-rectangle-container {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lignes2-rectangle {
+      width: 120px;
+      height: 80px;
+      background: #B3CAE3;
+      border-radius: 8px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .lignes2-yellow-rectangle {
+      width: 0;
+      height: 80px;
+      background: #F0ECC8;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      position: absolute;
+      left: 120px;
+      top: 0;
+      overflow: hidden;
+      transition: width 0.3s ease;
+    }
+
+    .lignes2-scroll-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      max-height: 80px;
+      scroll-behavior: smooth;
+    }
+
+    .lignes2-scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lignes2-toggle:checked + .lignes2-rectangle + .lignes2-yellow-rectangle {
+      width: 442px;
+    }
+
+    .lignes2-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+      margin: 10px;
+      line-height: 1.4;
+    }
+
+    .lignes2-scroll-indicator {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      display: none;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .lignes2-toggle:checked + .lignes2-rectangle + .lignes2-yellow-rectangle .lignes2-scroll-indicator {
+      display: block;
+    }
+
+    .lignes2-scroll-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      opacity: 1;
+    }
+
+    .lignes2-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .lignes2-toggle {
+      display: none;
+    }
+
+    .lignes3-container {
+      width: 582px;
+      height: 280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: none;
+    }
+
+    .lignes3-rectangle-container {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lignes3-rectangle {
+      width: 120px;
+      height: 80px;
+      background: #B3CAE3;
+      border-radius: 8px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .lignes3-yellow-rectangle {
+      width: 0;
+      height: 80px;
+      background: #F0ECC8;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      position: absolute;
+      left: 120px;
+      top: 0;
+      overflow: hidden;
+      transition: width 0.3s ease;
+    }
+
+    .lignes3-scroll-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      max-height: 80px;
+      scroll-behavior: smooth;
+    }
+
+    .lignes3-scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lignes3-toggle:checked + .lignes3-rectangle + .lignes3-yellow-rectangle {
+      width: 442px;
+    }
+
+    .lignes3-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+      margin: 10px;
+      line-height: 1.4;
+    }
+
+    .lignes3-scroll-indicator {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      display: none;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .lignes3-toggle:checked + .lignes3-rectangle + .lignes3-yellow-rectangle .lignes3-scroll-indicator {
+      display: block;
+    }
+
+    .lignes3-scroll-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      opacity: 1;
+    }
+
+    .lignes3-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .lignes3-toggle {
+      display: none;
+    }
+
+    .cercles-container {
+      width: 500px;
+      height: 600px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      background: none;
+    }
+
+    .cercles-circle {
+      border-radius: 50% !important;
+      box-sizing: border-box;
+      position: relative;
+      text-decoration: none;
+      perspective: 1000px;
+    }
+
+    .cercles-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .cercles-circle:hover .cercles-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .cercles-card-front, .cercles-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 50% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #F0ECC8;
+      border: 2px solid #999;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      color: #333;
+    }
+
+    .cercles-card-back {
+      background: #E6F0FB;
+      color: #333;
+      transform: rotateY(180deg);
+      font-size: 0.8rem;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .cercles-card-back::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cercles-top-circle {
+      width: 250px;
+      height: 250px;
+      margin-top: 10px;
+    }
+
+    .cercles-bottom-circles {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 10px;
+    }
+
+    .cercles-bottom-circle {
+      width: 250px;
+      height: 250px;
+    }
+
+    /* Styles pour blocs (BlocsdetexteverticauxB) */
+    .blocs-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .blocs-block {
+      background-color: #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .blocs-block:nth-child(1) { width: 100px; }
+    .blocs-block:nth-child(2) { width: 150px; }
+    .blocs-block:nth-child(3) { width: 200px; }
+
+    .blocs-block:hover {
+      transform: scale(1.05);
+      background-color: #ccc;
+    }
+
+    /* Styles pour imageronde (imagerondeaudessustexteB) */
+    .imageronde-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .imageronde-container img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .imageronde-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .imageronde-text {
+      font-size: 16px;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Styles pour imagerondeoverlay (imagerondeoverlaytexteB) */
+    .imagerondeoverlay-container {
+      position: relative;
+      width: 200px;
+      margin: 20px auto;
+    }
+
+    .imagerondeoverlay-container img {
+      width: 100%;
+      border-radius: 50%;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .imagerondeoverlay-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .imagerondeoverlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 0 0 50% 50%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Styles pour galerie (galeried'imageB) */
+    .galerie-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      padding: 10px;
+    }
+
+    .galerie-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 150px;
+      background-color: #f4f4f4;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .galerie-image.large {
+      height: 300px;
+      width: 200px;
+    }
+
+    .galerie-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .galerie-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .galerie-zoom-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .galerie-zoom-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .galerie-zoom-overlay:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .galerie-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 35px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .galerie-close:hover {
+      color: red;
+    }
+
+    /* Styles pour carte (carteavecoverlayB) */
+    .carte-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background-image: url('https://picsum.photos/300/200');
+      background-size: cover;
+      background-position: center;
+      margin: 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .carte-container:hover {
+      transform: scale(1.03);
+    }
+
+    .carte-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: rgba(255, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.2em;
+      text-align: center;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .carte-container:hover .carte-overlay {
+      background-color: rgba(255, 0, 0, 0.6);
+    }
+
+    /* Styles pour imagehauttexte (Imageau-dessusdutexteB) */
+    .imagehauttexte-container {
+      max-width: 400px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .imagehauttexte-image-box {
+      width: 100%;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .imagehauttexte-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .imagehauttexte-text-box {
+      background-color: #e0e0e0;
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    /* Styles pour tableau (TableaustyliséB) */
+    .tableau-container {
+      margin: 40px auto;
+      max-width: 90%;
+      overflow-x: auto;
+    }
+
+    .tableau-container table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .tableau-container th,
+    .tableau-container td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .tableau-container th {
+      background-color: #e0e0e0;
+      font-weight: bold;
+    }
+
+    .tableau-container tr:nth-child(even) {
+      background-color: #f4f4f4;
+    }
+
+    .tableau-container tr:hover {
+      background-color: #ddd;
+      transition: background 0.3s ease;
+    }
+
+    /* Media queries pour les composants existants */
+    @media screen and (max-width: 768px) {
+      .colonnes2-container {
+        width: 200px;
+        height: 300px;
+        gap: 5px;
+        padding: 8px;
+      }
+
+      .colonnes2-rectangle {
+        width: 90px;
+        height: 30px;
+        border-radius: 6px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .colonnes2-title {
+        font-size: 12px;
+      }
+
+      .colonnes2-yellow-rectangle {
+        width: 90px;
+        height: 0;
+        border-radius: 6px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: 30px;
+        left: 0;
+        transition: height 0.3s ease;
+      }
+
+      .colonnes2-scroll-content {
+        max-height: 254px;
+      }
+
+      .colonnes2-toggle:checked + .colonnes2-rectangle + .colonnes2-yellow-rectangle {
+        height: 254px;
+      }
+
+      .colonnes2-text {
+        font-size: 12px;
+        margin: 8px;
+        line-height: 1.3;
+      }
+
+      .colonnes2-scroll-indicator {
+        width: 16px;
+        height: 16px;
+      }
+
+      .colonnes2-scroll-link {
+        font-size: 12px;
+      }
+
+      .colonnes3-container {
+        width: 280px;
+        height: 300px;
+        gap: 5px;
+        padding: 8px;
+      }
+
+      .colonnes3-rectangle {
+        width: 90px;
+        height: 30px;
+        border-radius: 6px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .colonnes3-title {
+        font-size: 12px;
+      }
+
+      .colonnes3-yellow-rectangle {
+        width: 90px;
+        height: 0;
+        border-radius: 6px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: 30px;
+        left: 0;
+        transition: height 0.3s ease;
+      }
+
+      .colonnes3-scroll-content {
+        max-height: 254px;
+      }
+
+      .colonnes3-toggle:checked + .colonnes3-rectangle + .colonnes3-yellow-rectangle {
+        height: 254px;
+      }
+
+      .colonnes3-text {
+        font-size: 12px;
+        margin: 8px;
+        line-height: 1.3;
+      }
+
+      .colonnes3-scroll-indicator {
+        width: 16px;
+        height: 16px;
+      }
+
+      .colonnes3-scroll-link {
+        font-size: 12px;
+      }
+
+      .lignes2-container {
+        width: 440px;
+        height: 146px;
+        gap: 5px;
+        padding: 8px;
+      }
+
+      .lignes2-rectangle {
+        width: 90px;
+        height: 60px;
+        border-radius: 6px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .lignes2-title {
+        font-size: 12px;
+      }
+
+      .lignes2-yellow-rectangle {
+        width: 0;
+        height: 60px;
+        border-radius: 6px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 90px;
+        top: 0;
+        transition: width 0.3s ease;
+      }
+
+      .lignes2-scroll-content {
+        max-height: 60px;
+      }
+
+      .lignes2-toggle:checked + .lignes2-rectangle + .lignes2-yellow-rectangle {
+        width: 330px;
+      }
+
+      .lignes2-text {
+        font-size: 12px;
+        margin: 8px;
+        line-height: 1.3;
+      }
+
+      .lignes2-scroll-indicator {
+        width: 16px;
+        height: 16px;
+      }
+
+      .lignes2-scroll-link {
+        font-size: 12px;
+      }
+
+      .lignes3-container {
+        width: 440px;
+        height: 206px;
+        gap: 5px;
+        padding: 8px;
+      }
+
+      .lignes3-rectangle {
+        width: 90px;
+        height: 60px;
+        border-radius: 6px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .lignes3-title {
+        font-size: 12px;
+      }
+
+      .lignes3-yellow-rectangle {
+        width: 0;
+        height: 60px;
+        border-radius: 6px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 90px;
+        top: 0;
+        transition: width 0.3s ease;
+      }
+
+      .lignes3-scroll-content {
+        max-height: 60px;
+      }
+
+      .lignes3-toggle:checked + .lignes3-rectangle + .lignes3-yellow-rectangle {
+        width: 330px;
+      }
+
+      .lignes3-text {
+        font-size: 12px;
+        margin: 8px;
+        line-height: 1.3;
+      }
+
+      .lignes3-scroll-indicator {
+        width: 16px;
+        height: 16px;
+      }
+
+      .lignes3-scroll-link {
+        font-size: 12px;
+      }
+
+      .cercles-container {
+        width: 310px;
+        height: 350px;
+      }
+
+      .cercles-top-circle {
+        width: 150px;
+        height: 150px;
+        margin-top: 8px;
+      }
+
+      .cercles-bottom-circles {
+        margin-top: 8px;
+        gap: 8px;
+      }
+
+      .cercles-bottom-circle {
+        width: 150px;
+        height: 150px;
+      }
+
+      .cercles-card-front, .cercles-card-back {
+        padding: 20px;
+      }
+
+      .cercles-card-back {
+        font-size: 0.6rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .colonnes2-container {
+        width: 150px;
+        height: 200px;
+        gap: 5px;
+        padding: 5px;
+      }
+
+      .colonnes2-rectangle {
+        width: 65px;
+        height: 25px;
+        border-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .colonnes2-title {
+        font-size: 10px;
+      }
+
+      .colonnes2-yellow-rectangle {
+        width: 65px;
+        height: 0;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: 25px;
+        left: 0;
+        transition: height 0.3s ease;
+      }
+
+      .colonnes2-scroll-content {
+        max-height: 165px;
+      }
+
+      .colonnes2-toggle:checked + .colonnes2-rectangle + .colonnes2-yellow-rectangle {
+        height: 165px;
+      }
+
+      .colonnes2-text {
+        font-size: 10px;
+        margin: 5px;
+        line-height: 1.2;
+      }
+
+      .colonnes2-scroll-indicator {
+        width: 12px;
+        height: 12px;
+      }
+
+      .colonnes2-scroll-link {
+        font-size: 10px;
+      }
+
+      .colonnes3-container {
+        width: 205px;
+        height: 200px;
+        gap: 5px;
+        padding: 5px;
+      }
+
+      .colonnes3-rectangle {
+        width: 65px;
+        height: 25px;
+        border-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .colonnes3-title {
+        font-size: 10px;
+      }
+
+      .colonnes3-yellow-rectangle {
+        width: 65px;
+        height: 0;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: 25px;
+        left: 0;
+        transition: height 0.3s ease;
+      }
+
+      .colonnes3-scroll-content {
+        max-height: 165px;
+      }
+
+      .colonnes3-toggle:checked + .colonnes3-rectangle + .colonnes3-yellow-rectangle {
+        height: 165px;
+      }
+
+      .colonnes3-text {
+        font-size: 10px;
+        margin: 5px;
+        line-height: 1.2;
+      }
+
+      .colonnes3-scroll-indicator {
+        width: 12px;
+        height: 12px;
+      }
+
+      .colonnes3-scroll-link {
+        font-size: 10px;
+      }
+
+      .lignes2-container {
+        width: 300px;
+        height: 114px;
+        gap: 5px;
+        padding: 5px;
+      }
+
+      .lignes2-rectangle {
+        width: 65px;
+        height: 50px;
+        border-radius: 4px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .lignes2-title {
+        font-size: 10px;
+      }
+
+      .lignes2-yellow-rectangle {
+        width: 0;
+        height: 50px;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 65px;
+        top: 0;
+        transition: width 0.3s ease;
+      }
+
+      .lignes2-scroll-content {
+        max-height: 50px;
+      }
+
+      .lignes2-toggle:checked + .lignes2-rectangle + .lignes2-yellow-rectangle {
+        width: 215px;
+      }
+
+      .lignes2-text {
+        font-size: 10px;
+        margin: 5px;
+        line-height: 1.2;
+      }
+
+      .lignes2-scroll-indicator {
+        width: 12px;
+        height: 12px;
+      }
+
+      .lignes2-scroll-link {
+        font-size: 10px;
+      }
+
+      .lignes3-container {
+        width: 300px;
+        height: 170px;
+        gap: 5px;
+        padding: 5px;
+      }
+
+      .lignes3-rectangle {
+        width: 65px;
+        height: 50px;
+        border-radius: 4px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        cursor: pointer;
+      }
+
+      .lignes3-title {
+        font-size: 10px;
+      }
+
+      .lignes3-yellow-rectangle {
+        width: 0;
+        height: 50px;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 65px;
+        top: 0;
+        transition: width 0.3s ease;
+      }
+
+      .lignes3-scroll-content {
+        max-height: 50px;
+      }
+
+      .lignes3-toggle:checked + .lignes3-rectangle + .lignes3-yellow-rectangle {
+        width: 215px;
+      }
+
+      .lignes3-text {
+        font-size: 10px;
+        margin: 5px;
+        line-height: 1.2;
+      }
+
+      .lignes3-scroll-indicator {
+        width: 12px;
+        height: 12px;
+      }
+
+      .lignes3-scroll-link {
+        font-size: 10px;
+      }
+
+      .cercles-container {
+        width: 220px;
+        height: 230px;
+        padding: 5px;
+      }
+
+      .cercles-top-circle {
+        width: 100px;
+        height: 100px;
+        margin-top: 3px;
+      }
+
+      .cercles-bottom-circles {
+        margin-top: 3px;
+        padding: 0 5px;
+        gap: 5px;
+      }
+
+      .cercles-bottom-circle {
+        width: 100px;
+        height: 100px;
+      }
+
+      .cercles-card-front, .cercles-card-back {
+        padding: 15px;
+      }
+
+      .cercles-card-back {
+        font-size: 0.5rem;
+      }
+    }
+
+    /* Media queries pour blocs */
+    @media (max-width: 600px) {
+      .blocs-block {
+        width: 80% !important;
+      }
+    }
+
+    /* Media queries pour imageronde */
+    @media (max-width: 600px) {
+      .imageronde-container {
+        width: 150px;
+      }
+
+      .imageronde-container img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    /* Media queries pour imagerondeoverlay */
+    @media (max-width: 600px) {
+      .imagerondeoverlay-container {
+        width: 150px;
+      }
+
+      .imagerondeoverlay-text {
+        font-size: 12px;
+        padding: 6px;
+      }
+    }
+
+    /* Media queries pour galerie */
+    @media (max-width: 1024px) {
+      .galerie-container {
+        gap: 15px;
+      }
+      .galerie-image {
+        height: 180px;
+        width: 140px;
+      }
+      .galerie-image.large {
+        height: 260px;
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .galerie-container {
+        justify-content: center;
+      }
+      .galerie-image {
+        height: 160px;
+        width: 120px;
+      }
+      .galerie-image.large {
+        height: 220px;
+        width: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .galerie-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .galerie-image,
+      .galerie-image.large {
+        width: 90%;
+        height: auto;
+        max-width: 300px;
+      }
+      .galerie-image img {
+        height: auto;
+      }
+    }
+
+    /* Media queries pour carte */
+    @media (max-width: 600px) {
+      .carte-container {
+        width: 90%;
+        height: 180px;
+      }
+      .carte-overlay {
+        width: 100%;
+        font-size: 1em;
+      }
+    }
+
+    /* Media queries pour imagehauttexte */
+    @media (max-width: 600px) {
+      .imagehauttexte-container {
+        max-width: 90%;
+      }
+    }
+
+    /* Media queries pour tableau */
+    @media (max-width: 600px) {
+      .tableau-container table,
+      .tableau-container thead,
+      .tableau-container tbody,
+      .tableau-container th,
+      .tableau-container td,
+      .tableau-container tr {
+        display: block;
+        width: 100%;
+      }
+
+      .tableau-container tr {
+        margin-bottom: 10px;
+      }
+
+      .tableau-container td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      .tableau-container td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+ <!-- Composant Box 2 Lignes -->
+  <div class="box2lignes-component component">
+    <div class="box2lignes-container common-container">
+      <div class="box2lignes-row common-row">
+        <img class="box2lignes-image common-image" src="../images/region.jpg" alt="Région">
+        <p class="box2lignes-text common-text">
+          Lorem ipsum dolng elit. Prt viverra purus elementum non.
+        </p>
+      </div>
+      <div class="box2lignes-row common-row">
+        <img class="box2lignes-image common-image" src="../images/region.jpg" alt="Région">
+        <p class="box2lignes-text common-text">
+          Lorem ipsum dolor sit amet, c Lorem ipsum dolor sit amet, consectetur adipisci. Mauris vehicula ante tellus, at viverra purus elementum non.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Box 3 Lignes -->
+  <div class="box3lignes-component component">
+    <div class="box3lignes-container common-container">
+      <div class="box3lignes-row common-row">
+        <img class="box3lignes-image common-image" src="../images/region.jpg" alt="Région">
+        <p class="box3lignes-text common-text">
+          Lorem ipsum dolng elit. Prt viverra purus elementum non.
+        </p>
+      </div>
+      <div class="box3lignes-row common-row">
+        <img class="box3lignes-image common-image" src="../images/region.jpg" alt="Région">
+        <p class="box3lignes-text common-text">
+          Lorem ipsum dolor sit amet, c Lorem ipsum dolor sit amet, consectetur adipisci. Mauris vehicula ante tellus, at viverra purus elementum non.
+        </p>
+      </div>
+      <div class="box3lignes-row common-row">
+        <img class="box3lignes-image common-image" src="../images/region.jpg" alt="Région">
+        <p class="box3lignes-text common-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Exemple -->
+  <div class="exemple-component component">
+    <div class="exemple-container common-container">
+      <div class="exemple-rectangle"></div>
+      <div class="exemple-content">
+        <h1 class="exemple-title common-title">Exemple</h1>
+        <p class="exemple-text common-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 2 Colonnes -->
+  <div class="colonnes2-component component">
+    <div class="colonnes2-container">
+      <div class="colonnes2-rectangle-container">
+        <input type="checkbox" class="colonnes2-toggle" id="colonnes2-toggle-1">
+        <label for="colonnes2-toggle-1" class="colonnes2-rectangle">
+          <h1 class="colonnes2-title">Lorem ipsum</h1>
+        </label>
+        <div class="colonnes2-yellow-rectangle">
+          <div class="colonnes2-scroll-content">
+            <p class="colonnes2-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="colonnes2-scroll-indicator">
+            <span class="colonnes2-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="colonnes2-rectangle-container">
+        <input type="checkbox" class="colonnes2-toggle" id="colonnes2-toggle-2">
+        <label for="colonnes2-toggle-2" class="colonnes2-rectangle">
+          <h1 class="colonnes2-title">Lorem ipsum</h1>
+        </label>
+        <div class="colonnes2-yellow-rectangle">
+          <div class="colonnes2-scroll-content">
+            <p class="colonnes2-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="colonnes2-scroll-indicator">
+            <span class="colonnes2-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 3 Colonnes -->
+  <div class="colonnes3-component component">
+    <div class="colonnes3-container">
+      <div class="colonnes3-rectangle-container">
+        <input type="checkbox" class="colonnes3-toggle" id="colonnes3-toggle-1">
+        <label for="colonnes3-toggle-1" class="colonnes3-rectangle">
+          <h1 class="colonnes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="colonnes3-yellow-rectangle">
+          <div class="colonnes3-scroll-content">
+            <p class="colonnes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="colonnes3-scroll-indicator">
+            <span class="colonnes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="colonnes3-rectangle-container">
+        <input type="checkbox" class="colonnes3-toggle" id="colonnes3-toggle-2">
+        <label for="colonnes3-toggle-2" class="colonnes3-rectangle">
+          <h1 class="colonnes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="colonnes3-yellow-rectangle">
+          <div class="colonnes3-scroll-content">
+            <p class="colonnes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="colonnes3-scroll-indicator">
+            <span class="colonnes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="colonnes3-rectangle-container">
+        <input type="checkbox" class="colonnes3-toggle" id="colonnes3-toggle-3">
+        <label for="colonnes3-toggle-3" class="colonnes3-rectangle">
+          <h1 class="colonnes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="colonnes3-yellow-rectangle">
+          <div class="colonnes3-scroll-content">
+            <p class="colonnes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="colonnes3-scroll-indicator">
+            <span class="colonnes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 2 Lignes -->
+  <div class="lignes2-component component">
+    <div class="lignes2-container">
+      <div class="lignes2-rectangle-container">
+        <input type="checkbox" class="lignes2-toggle" id="lignes2-toggle-1">
+        <label for="lignes2-toggle-1" class="lignes2-rectangle">
+          <h1 class="lignes2-title">Lorem ipsum</h1>
+        </label>
+        <div class="lignes2-yellow-rectangle">
+          <div class="lignes2-scroll-content">
+            <p class="lignes2-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="lignes2-scroll-indicator">
+            <span class="lignes2-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="lignes2-rectangle-container">
+        <input type="checkbox" class="lignes2-toggle" id="lignes2-toggle-2">
+        <label for="lignes2-toggle-2" class="lignes2-rectangle">
+          <h1 class="lignes2-title">Lorem ipsum</h1>
+        </label>
+        <div class="lignes2-yellow-rectangle">
+          <div class="lignes2-scroll-content">
+            <p class="lignes2-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="lignes2-scroll-indicator">
+            <span class="lignes2-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 3 Lignes -->
+  <div class="lignes3-component component">
+    <div class="lignes3-container">
+      <div class="lignes3-rectangle-container">
+        <input type="checkbox" class="lignes3-toggle" id="lignes3-toggle-1">
+        <label for="lignes3-toggle-1" class="lignes3-rectangle">
+          <h1 class="lignes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="lignes3-yellow-rectangle">
+          <div class="lignes3-scroll-content">
+            <p class="lignes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="lignes3-scroll-indicator">
+            <span class="lignes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="lignes3-rectangle-container">
+        <input type="checkbox" class="lignes3-toggle" id="lignes3-toggle-2">
+        <label for="lignes3-toggle-2" class="lignes3-rectangle">
+          <h1 class="lignes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="lignes3-yellow-rectangle">
+          <div class="lignes3-scroll-content">
+            <p class="lignes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="lignes3-scroll-indicator">
+            <span class="lignes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="lignes3-rectangle-container">
+        <input type="checkbox" class="lignes3-toggle" id="lignes3-toggle-3">
+        <label for="lignes3-toggle-3" class="lignes3-rectangle">
+          <h1 class="lignes3-title">Lorem ipsum</h1>
+        </label>
+        <div class="lignes3-yellow-rectangle">
+          <div class="lignes3-scroll-content">
+            <p class="lignes3-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non.
+            </p>
+          </div>
+          <div class="lignes3-scroll-indicator">
+            <span class="lignes3-scroll-link">▼</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 3 Cercles -->
+  <div class="cercles-component component">
+    <div class="cercles-container">
+      <div class="cercles-circle cercles-top-circle">
+        <div class="cercles-card-inner">
+          <div class="cercles-card-front">
+            <p>Lorem ipsum</p>
+          </div>
+          <div class="cercles-card-back">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cercles-bottom-circles">
+        <div class="cercles-circle cercles-bottom-circle">
+          <div class="cercles-card-inner">
+            <div class="cercles-card-front">
+              <p>Lorem ipsum</p>
+            </div>
+            <div class="cercles-card-back">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="cercles-circle cercles-bottom-circle">
+          <div class="cercles-card-inner">
+            <div class="cercles-card-front">
+              <p>Lorem ipsum</p>
+            </div>
+            <div class="cercles-card-back">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet ligula sed est vestibulum congue. Mauris vehicula ante tellus, at viverra purus elementum non. In accumsan lectus a ex vulputate ullamcorper. Vestibulum blandit porttitor enim.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Image Gauche Texte Droit -->
+  <div class="imagegauche-component component">
+    <div class="imagegauche-container common-container">
+      <div class="imagegauche-row common-row">
+        <img class="imagegauche-image common-image" src="../images/region.jpg" alt="Région">
+        <div class="imagegauche-text-box common-text-box">
+          <p class="imagegauche-text common-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incidid Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Image Droite Texte Gauche -->
+  <div class="imagedroite-component component">
+    <div class="imagedroite-container common-container">
+      <div class="imagedroite-row common-row">
+        <div class="imagedroite-text-box common-text-box">
+          <p class="imagedroite-text common-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incidid Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer
+          </p>
+        </div>
+        <img class="imagedroite-image common-image" src="../images/region.jpg" alt="Région">
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Image Haut Texte Bas -->
+  <div class="imagehaut-component component">
+    <div class="imagehaut-container common-container">
+      <img class="imagehaut-image common-image" src="../images/region.jpg" alt="Région">
+      <div class="imagehaut-text-box common-text-box">
+        <p class="imagehaut-text common-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Texte Haut Image Bas -->
+  <div class="textehaut-component component">
+    <div class="textehaut-container common-container">
+      <div class="textehaut-text-box common-text-box">
+        <p class="textehaut-text common-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incidid Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer
+        </p>
+      </div>
+      <img class="textehaut-image common-image" src="../images/region.jpg" alt="Région">
+    </div>
+  </div>
+
+  <!-- Composant Image Haut 2 Petites Images Bas -->
+  <div class="imagehaut2petites-component component">
+    <div class="imagehaut2petites-container common-container">
+      <img class="imagehaut2petites-top-image common-image" src="../images/region.jpg" alt="Région">
+      <div class="imagehaut2petites-bottom">
+        <img class="imagehaut2petites-bottom-image common-image" src="../images/region.jpg" alt="Région">
+        <img class="imagehaut2petites-bottom-image common-image" src="../images/region.jpg" alt="Région">
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant 2 Images Gauche 1 Image Droite -->
+  <div class="images2gauche1droite-component component">
+    <div class="images2gauche1droite-container common-container">
+      <div class="images2gauche1droite-left">
+        <img class="images2gauche1droite-left-image common-image" src="../images/region.jpg" alt="Région">
+        <img class="images2gauche1droite-left-image common-image" src="../images/region.jpg" alt="Région">
+      </div>
+      <img class="images2gauche1droite-right-image common-image" src="../images/region.jpg" alt="Région">
+    </div>
+  </div>
+
+  <!-- Composant Blocs de Texte Verticaux -->
+  <div class="blocs-component component">
+    <div class="blocs-container">
+      <div class="blocs-block">Bloc 1</div>
+      <div class="blocs-block">Bloc 2</div>
+      <div class="blocs-block">Bloc 3</div>
+    </div>
+  </div>
+
+  <!-- Composant Image Ronde Audessus Texte -->
+  <div class="imageronde-component component">
+    <div class="imageronde-container">
+      <img src="../images/region.jpg" alt="Exemple">
+      <div class="imageronde-text">Texte sous l'image</div>
+    </div>
+  </div>
+
+  <!-- Composant Image Ronde Overlay Texte -->
+  <div class="imagerondeoverlay-component component">
+    <div class="imagerondeoverlay-container">
+      <img src="../images/region.jpg" alt="Exemple">
+      <div class="imagerondeoverlay-text">Texte ici</div>
+    </div>
+  </div>
+
+  <!-- Composant Galerie d'Images -->
+  <div class="galerie-component component">
+    <div class="galerie-container">
+      <a href="#img1" class="galerie-image">
+        <img src="../images/region.jpg" alt="Image 1">
+      </a>
+      <a href="#img2" class="galerie-image large">
+        <img src="../images/region.jpg" alt="Image 2">
+      </a>
+      <a href="#img3" class="galerie-image">
+        <img src="../images/region.jpg" alt="Image 3">
+      </a>
+    </div>
+    <div id="img1" class="galerie-zoom-overlay">
+      <a href="#" class="galerie-close">&times;</a>
+      <img src="../images/region.jpg" alt="Zoom 1">
+    </div>
+    <div id="img2" class="galerie-zoom-overlay">
+      <a href="#" class="galerie-close">&times;</a>
+      <img src="../images/region.jpg" alt="Zoom 2">
+    </div>
+    <div id="img3" class="galerie-zoom-overlay">
+      <a href="#" class="galerie-close">&times;</a>
+      <img src="../images/region.jpg" alt="Zoom 3">
+    </div>
+  </div>
+
+  <!-- Composant Carte avec Overlay -->
+  <div class="carte-component component">
+    <div class="carte-container">
+      <div class="carte-overlay">
+        <p>Qwerty ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composant Tableau Stylisé -->
+  <div class="tableau-component component">
+    <div class="tableau-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Colonne 1</th>
+            <th>Colonne 2</th>
+            <th>Colonne 3</th>
+            <th>Colonne 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Colonne 1">Texte 1</td>
+            <td data-label="Colonne 2">Texte 2</td>
+            <td data-label="Colonne 3">Texte 3</td>
+            <td data-label="Colonne 4">Texte 4</td>
+          </tr>
+          <tr>
+            <td data-label="Colonne 1">Texte 5</td>
+            <td data-label="Colonne 2">Texte 6</td>
+            <td data-label="Colonne 3">Texte 7</td>
+            <td data-label="Colonne 4">Texte 8</td>
+          </tr>
+          <tr>
+            <td data-label="Colonne 1">Texte 9</td>
+            <td data-label="Colonne 2">Texte 10</td>
+            <td data-label="Colonne 3">Texte 11</td>
+            <td data-label="Colonne 4">Texte 12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Composant Image au-dessus du Texte -->
+  <div class="imagehauttexte-component component">
+    <div class="imagehauttexte-container">
+      <div class="imagehauttexte-image-box">
+        <img src="../images/region.jpg" alt="Image exemple">
+      </div>
+      <div class="imagehauttexte-text-box">
+        <p>Texte explicatif sous l'image</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>   
