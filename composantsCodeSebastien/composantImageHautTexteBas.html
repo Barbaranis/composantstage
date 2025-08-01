@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composant avec Image et Texte</title>
+    <style>
+      .container {
+        width: 400px;
+        height: auto;
+        background-color: #f0ecc8;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        border-radius: 20px;
+      }
+
+      .header-image {
+        width: 100%;
+        height: 300px; /* Ajustez la hauteur de l'image selon vos besoins */
+        object-fit: cover;
+      }
+
+      .text-box {
+        background-color: rgba(
+          250,
+          248,
+          247,
+          0.7
+        ); /* #FAF8F7 avec 70% d'opacité */
+        padding: 20px;
+        margin: 20px;
+        border-radius: 20px;
+        box-sizing: border-box;
+        overflow-y: auto; /* Ajouté pour défilement vertical si texte trop long */
+        min-height: 100px;
+      }
+
+      .text-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        overflow-wrap: break-word;
+      }
+
+      @media screen and (max-width: 768px) {
+    .container {
+        width: 320px; /* Réduit à 320px pour tablettes */
+        height: auto;
+    }
+
+    .header-image {
+        height: 200px; /* Réduit la hauteur de l’image */
+    }
+
+    .text-box {
+        padding: 20px; /* Réduit le padding */
+        margin: 15px; /* Réduit la marge */
+        min-height: 80px;
+    }
+
+    .text-box p {
+        font-size: 14px; /* Réduit la taille de police */
+    }
+}
+
+/* Media query pour téléphones (≤ 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 280px; /* Réduit à 280px pour téléphones */
+        height: auto;
+    }
+
+    .header-image {
+        height: 150px; /* Réduit encore la hauteur de l’image */
+    }
+
+    .text-box {
+        padding: 10px; /* Réduit encore le padding */
+        margin: 10px; /* Réduit encore la marge */
+        min-height: 60px;
+    }
+
+    .text-box p {
+        font-size: 12px; /* Réduit encore la taille de police */
+    }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="../images/region.jpg"
+        alt="Image d'en-tête"
+        class="header-image"
+      />
+      <div class="text-box">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+           Sed do Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
